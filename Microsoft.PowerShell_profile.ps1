@@ -14,6 +14,7 @@ Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 Set-Alias -Name l -Value Eza-l -option AllScope
 Set-Alias -Name ls -Value Eza-ls -option AllScope
+Set-Alias -Name cat -Value bat
 
 function Eza-l() {
     eza -l --git --grid --time-style relative
