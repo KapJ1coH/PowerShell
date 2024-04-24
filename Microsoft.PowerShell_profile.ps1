@@ -22,3 +22,7 @@ function Eza-l() {
 function Eza-ls() {
     eza -l --git --time-style relative
 }
+
+
+# For the taskList -> pip install pls-cli
+pls
