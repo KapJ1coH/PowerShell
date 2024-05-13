@@ -1,4 +1,16 @@
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
+
+Set-Alias -Name l -Value Eza-l -option AllScope
+Set-Alias -Name ls -Value Eza-ls -option AllScope
+Set-Alias -Name cat -Value bat
+
+function Eza-l() {
+    eza -l --git --grid --time-style relative
+}
+function Eza-ls() {
+    eza -l --git --time-style relative
+}
+
 $null = Register-EngineEvent -SourceIdentifier 'PowerShell.OnIdle' -MaxTriggerCount 1 -Action {
 
     Set-PSReadLineOption -Colors @{ InlinePrediction = 'Green' }
@@ -15,16 +27,6 @@ $null = Register-EngineEvent -SourceIdentifier 'PowerShell.OnIdle' -MaxTriggerCo
     Set-PSReadLineOption -Colors @{ InlinePrediction = "`e[38;2;240;98;146m" }
     Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
     Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
-    Set-Alias -Name l -Value Eza-l -option AllScope
-    Set-Alias -Name ls -Value Eza-ls -option AllScope
-    Set-Alias -Name cat -Value bat
-
-    function Eza-l() {
-        eza -l --git --grid --time-style relative
-    }
-    function Eza-ls() {
-        eza -l --git --time-style relative
-    }
 
 
 # For the taskList -> pip install pls-cli
