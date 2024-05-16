@@ -1,4 +1,5 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
+# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
+Invoke-Expression (&starship init powershell)
 
 Set-Alias -Name l -Value Eza-l -option AllScope
 Set-Alias -Name ls -Value Eza-ls -option AllScope
@@ -10,6 +11,18 @@ function Eza-l() {
 function Eza-ls() {
     eza -l --git --time-style relative
 }
+
+function Yazi-yy() {
+    $tmp = [System.IO.Path]::GetTempFileName()
+        yazi $args --cwd-file="$tmp"
+        $cwd = Get-Content -Path $tmp
+        if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+            Set-Location -LiteralPath $cwd
+        }
+    Remove-Item -Path $tmp
+}
+
+Set-Alias -Name yy -Value Yazi-yy -option ALLScope
 
 $null = Register-EngineEvent -SourceIdentifier 'PowerShell.OnIdle' -MaxTriggerCount 1 -Action {
 
@@ -31,5 +44,6 @@ $null = Register-EngineEvent -SourceIdentifier 'PowerShell.OnIdle' -MaxTriggerCo
 
 # For the taskList -> pip install pls-cli
     pls
+
 
 }
