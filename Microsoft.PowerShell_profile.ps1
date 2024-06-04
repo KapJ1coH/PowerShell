@@ -1,15 +1,15 @@
-# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
-Invoke-Expression (&starship init powershell)
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
+# Invoke-Expression (&starship init powershell)
 
 Set-Alias -Name l -Value Eza-l -option AllScope
 Set-Alias -Name ls -Value Eza-ls -option AllScope
 Set-Alias -Name cat -Value bat
 
 function Eza-l() {
-    eza -l --git --grid --time-style relative
+    eza -l --git --grid --time-style relative -a
 }
 function Eza-ls() {
-    eza -l --git --time-style relative
+    eza -l --git --time-style relative -a
 }
 
 function Yazi-yy() {
