@@ -1,9 +1,16 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
-# Invoke-Expression (&starship init powershell)
+# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
+function Invoke-Starship-TransientFunction {
+  &starship module character
+}
+
+Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
+
 
 Set-Alias -Name l -Value Eza-l -option AllScope
 Set-Alias -Name ls -Value Eza-ls -option AllScope
 Set-Alias -Name cat -Value bat
+Set-Alias -Name python3 -Value python
 
 function Eza-l() {
     eza -l --git --grid --time-style relative -a
