@@ -1,10 +1,10 @@
 # oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/amro.omp.json" | Invoke-Expression
-function Invoke-Starship-TransientFunction {
-  &starship module character
-}
+# function Invoke-Starship-TransientFunction {
+#   &starship module character
+# }
 
 Invoke-Expression (&starship init powershell)
-Enable-TransientPrompt
+# Enable-TransientPrompt
 
 
 Set-Alias -Name l -Value Eza-l -option AllScope
