@@ -11,6 +11,7 @@ Set-Alias -Name l -Value Eza-l -option AllScope
 Set-Alias -Name ls -Value Eza-ls -option AllScope
 Set-Alias -Name cat -Value bat
 Set-Alias -Name python3 -Value python
+Set-Alias -Name gg -Value lazygit
 
 function Eza-l() {
     eza -l --git --grid --time-style relative -a
